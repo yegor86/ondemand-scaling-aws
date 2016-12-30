@@ -1,15 +1,20 @@
-/*
+data "archive_file" "lifecycle-hook-archive" {
+    type = "zip"
+    source_dir = "${path.module}/../lifecycle-hook"
+    output_path = "${path.module}/../build/lifecycle-hook.zip"
+}
+
 // Create 'lifecycle hook' lambda function
 resource "aws_lambda_function" "lifecycle_hook" {
-    filename = "${path.module}/../lambdas.zip"
-    function_name = "lifecycleHook"
-    role = "${aws_iam_role.workflow_iam_role.arn}"
-    handler = "lifecycleHook.handler"
+    filename = "${data.archive_file.lifecycle-hook-archive.output_path}"
+    function_name = "lifecycle-hook"
+    role = "${aws_iam_role.generic_role.arn}"
+    handler = "index.handler"
     runtime = "python2.7"
     timeout = 300
     memory_size = 256
     description = "Auto Scaling Lifecycle Hook Lambda"
-    source_code_hash = "${base64sha256(file("${path.module}/../lambdas.zip"))}"
+    source_code_hash = "${base64sha256(file("${data.archive_file.lifecycle-hook-archive.output_path}"))}"
 }
 
 // Create SNS topic
@@ -84,4 +89,3 @@ resource "aws_iam_role_policy" "sns_lifecycle_hook_access_policy" {
 }
 EOF
 }
-*/

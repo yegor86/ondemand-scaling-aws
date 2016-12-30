@@ -29,6 +29,7 @@ resource "aws_iam_role_policy" "generic_policy" {
     {
       "Action": [
         "lambda:DeleteFunction",
+        "cloudwatch:PutMetricData",
         "swf:CountPendingActivityTasks",
         "swf:CountOpenWorkflowExecutions",
         "ec2:DescribeInstances",

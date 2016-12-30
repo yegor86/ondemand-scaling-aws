@@ -1,0 +1,11 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!*.py
+!*.md
+!*.txt
+six.py
+easy_install.py
+ipaddress.py

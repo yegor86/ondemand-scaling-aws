@@ -1,8 +1,8 @@
 import boto3
 from datetime import datetime
 
-domain_name = 'ondemand-scaling.com'
-taskListName = 'task-list'
+domain_name = 'ondemand.scaling'
+taskListName = 'taskList'
 
 swf_client = boto3.client('swf')
 cw_client = boto3.client('cloudwatch')

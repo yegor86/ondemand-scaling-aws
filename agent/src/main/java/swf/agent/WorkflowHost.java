@@ -2,7 +2,7 @@ package swf.agent;
 
 import java.util.concurrent.TimeUnit;
 
-import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
+import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow;
 import com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflowClient;
 import com.amazonaws.services.simpleworkflow.flow.WorkflowWorker;
@@ -14,7 +14,7 @@ public class WorkflowHost {
     private static String taskList = "taskList";
     
     public static void main(String[] args) throws Exception {
-    	AmazonSimpleWorkflow swfService = new AmazonSimpleWorkflowClient(new EnvironmentVariableCredentialsProvider());
+    	AmazonSimpleWorkflow swfService = new AmazonSimpleWorkflowClient(new InstanceProfileCredentialsProvider());
     	swfService.setEndpoint(swfServiceUrl);
         
         final WorkflowWorker worker = new WorkflowWorker(swfService, domain, taskList);

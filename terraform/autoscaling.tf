@@ -13,6 +13,7 @@ resource "aws_launch_configuration" "as_conf" {
     key_name = "${var.key_pair_name}"
     security_groups = ["${var.security_group_id}"]
     associate_public_ip_address = true
+    iam_instance_profile = "ondemand_scaling_profile"
 }
 
 resource "aws_autoscaling_group" "as_group" {

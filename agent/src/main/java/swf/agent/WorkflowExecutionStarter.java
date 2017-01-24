@@ -9,7 +9,6 @@ public class WorkflowExecutionStarter {
 	
     private static String swfServiceUrl = "http://swf.us-east-1.amazonaws.com";
 	private static String domain = "ondemand.scaling";
-	private static String taskList = "taskList";
     
     public static void main(String[] args) throws Exception {
     	

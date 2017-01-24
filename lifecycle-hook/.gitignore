@@ -9,3 +9,5 @@
 six.py
 easy_install.py
 ipaddress.py
+appdirs.py
+pyparsing.py

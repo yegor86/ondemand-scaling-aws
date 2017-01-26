@@ -8,7 +8,8 @@ variable "aws_region" {
 
 variable "image_id" {
     # Regular Amazon Linux
-    default = "ami-9be6f38c"
+    # default = "ami-9be6f38c"
+    default = "ami-10a35006"
 }
 
 variable "instance_type" {

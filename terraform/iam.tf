@@ -38,7 +38,8 @@ resource "aws_iam_role_policy" "generic_policy" {
         "ec2:DescribeNetworkInterfaces",
         "ec2:CreateTags",
         "ec2:RebootInstances",
-        "autoscaling:CompleteLifecycleAction"
+        "autoscaling:CompleteLifecycleAction",
+        "swf:StartWorkflowExecution"
       ],
       "Effect": "Allow",
       "Resource": "*"

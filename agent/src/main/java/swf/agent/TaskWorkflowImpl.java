@@ -34,11 +34,10 @@ public class TaskWorkflowImpl implements TaskWorkflow {
 		// Settable to store the worker specific task list returned by the activity
         final Settable<String> taskList = new Settable<String>();
         
-		String workflowRunId = workflowContext.getWorkflowExecution().getRunId();
 		File localSource = new File(sourceFilename);
-		final String localSourceFilename = workflowRunId + "_" + localSource.getName();
+		final String localSourceFilename = localSource.getName();
 		File localTarget = new File(targetFilename);
-        final String localTargetFilename = workflowRunId + "_" + localTarget.getName();
+        final String localTargetFilename = localTarget.getName();
 		
 		new TryCatchFinally() {
 

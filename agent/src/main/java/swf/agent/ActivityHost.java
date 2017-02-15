@@ -2,7 +2,6 @@ package swf.agent;
 
 import java.util.concurrent.TimeUnit;
 
-import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.simpleworkflow.AmazonSimpleWorkflow;
@@ -25,11 +24,9 @@ public class ActivityHost {
         
         // Start worker to poll the common task list
         final ActivityWorker activityWorker = new ActivityWorker(swfService, domain, taskList);
-        TaskActivityImpl storeActivityImpl = new TaskActivityImpl();
         FileProcessingActivityImpl fileProcessingActivity = new FileProcessingActivityImpl("/tmp/");
         SimpleStoreActivityS3Impl storeActivity = new SimpleStoreActivityS3Impl(s3Client, "/tmp/", taskList);
         
-        activityWorker.addActivitiesImplementation(storeActivityImpl);
         activityWorker.addActivitiesImplementation(fileProcessingActivity);
         activityWorker.addActivitiesImplementation(storeActivity);
         

@@ -18,7 +18,11 @@ public class WorkflowExecutionStarter {
         TaskWorkflowClientExternalFactory clientFactory = new TaskWorkflowClientExternalFactoryImpl(swfService, domain);
         TaskWorkflowClientExternal workflow = clientFactory.getClient();
         
-        workflow.process();
+        String sourceBucketName = "ic-ondeman-scaling";
+        String sourceFilename = "input/file.txt";
+        String targetBucketName = "ic-ondeman-scaling";
+        String targetFilename = "output/file.zip";
+        workflow.process(sourceBucketName, sourceFilename, targetBucketName, targetFilename);
         
         WorkflowExecution workflowExecution = workflow.getWorkflowExecution();
         System.out.println("Started periodic workflow with workflowId=\"" + workflowExecution.getWorkflowId()
